@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxe Jewels - Premium Diamond & Gold Jewelry</title>
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="nav-left">
+                    <button class="menu-toggle" id="menuToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="search-container">
+                        <input type="text" id="searchInput" placeholder="Search jewelry..." class="search-input">
+                        <i class="fas fa-search search-icon"></i>
+                    </div>
+                </div>
+                
+                <div class="logo">
+                    <h1>LUXE JEWELS</h1>
+                    <p>Premium Collection</p>
+                </div>
+                
+                <div class="nav-right">
+                    <button class="icon-btn" id="wishlistBtn">
+                        <i class="fas fa-heart"></i>
+                        <span class="badge" id="wishlistCount">0</span>
+                    </button>
+                    <button class="icon-btn" id="cartBtn">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span class="badge" id="cartCount">0</span>
+                    </button>
+                    <button class="icon-btn">
+                        <i class="fas fa-user"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <nav class="main-nav" id="mainNav">
+                <ul>
+                    <li><a href="#home" class="nav-link active">HOME</a></li>
+                    <li><a href="#rings" class="nav-link">RINGS</a></li>
+                    <li><a href="#necklaces" class="nav-link">NECKLACES</a></li>
+                    <li><a href="#earrings" class="nav-link">EARRINGS</a></li>
+                    <li><a href="#bracelets" class="nav-link">BRACELETS</a></li>
+                    <li><a href="#collections" class="nav-link">COLLECTIONS</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h2>Exquisite Diamond & Gold Jewelry</h2>
+                <p>Discover our curated collection of premium jewelry crafted with precision, meaning, and timeless elegance. Each piece tells a story of luxury and sophistication.</p>
+                <button class="cta-btn">Explore Collection</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter & Sort Section -->
+    <section class="filter-section">
+        <div class="container">
+            <div class="filter-controls">
+                <div class="filter-group">
+                    <label for="categoryFilter">Category:</label>
+                    <select id="categoryFilter">
+                        <option value="all">All Categories</option>
+                        <option value="rings">Rings</option>
+                        <option value="necklaces">Necklaces</option>
+                        <option value="earrings">Earrings</option>
+                        <option value="bracelets">Bracelets</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="priceFilter">Price Range:</label>
+                    <select id="priceFilter">
+                        <option value="all">All Prices</option>
+                        <option value="0-1000">$0 - $1,000</option>
+                        <option value="1000-5000">$1,000 - $5,000</option>
+                        <option value="5000-10000">$5,000 - $10,000</option>
+                        <option value="10000+">$10,000+</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="sortFilter">Sort By:</label>
+                    <select id="sortFilter">
+                        <option value="featured">Featured</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="newest">Newest First</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section" id="products">
+        <div class="container">
+            <h2 class="section-title">Our Premium Collection</h2>
+            <div class="products-grid" id="productsGrid">
+                <!-- Products will be dynamically loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Shopping Cart</h3>
+            <button class="close-cart" id="closeCart">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be dynamically loaded here -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <strong>Total: $<span id="cartTotal">0.00</span></strong>
+            </div>
+            <button class="checkout-btn" id="checkoutBtn">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <!-- Product Modal -->
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeModal">&times;</span>
+            <div class="modal-body" id="modalBody">
+                <!-- Product details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal" id="checkoutModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeCheckoutModal">&times;</span>
+            <div class="checkout-content">
+                <h2>Checkout</h2>
+                <div class="checkout-summary" id="checkoutSummary">
+                    <!-- Checkout items will be loaded here -->
+                </div>
+                <div class="customer-info">
+                    <h3>Customer Information</h3>
+                    <form id="checkoutForm">
+                        <input type="text" id="customerName" placeholder="Full Name" required>
+                        <input type="email" id="customerEmail" placeholder="Email Address" required>
+                        <input type="tel" id="customerPhone" placeholder="Phone Number" required>
+                        <textarea id="customerAddress" placeholder="Delivery Address" required></textarea>
+                        <textarea id="specialInstructions" placeholder="Special Instructions (Optional)"></textarea>
+                    </form>
+                </div>
+                <button class="whatsapp-btn" id="whatsappCheckout">
+                    <i class="fab fa-whatsapp"></i>
+                    Complete Purchase via WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>LUXE JEWELS</h3>
+                    <p>Crafting timeless elegance with premium diamonds and gold. Your trusted partner in luxury jewelry.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="#shipping">Shipping Info</a></li>
+                        <li><a href="#returns">Returns</a></li>
+                        <li><a href="#sizing">Size Guide</a></li>
+                        <li><a href="#care">Jewelry Care</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect With Us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Luxe Jewels. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
